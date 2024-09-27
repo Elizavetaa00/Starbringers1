@@ -1,0 +1,214 @@
+<html>
+Starbringers — Носители звезд
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тестирование</title>
+    <style>
+        body {
+            background-image: url(fon.jpg);
+            background-size: cover;
+            color: #fff;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .question {
+            margin: 20px 0;
+            padding: 15px;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 8px;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            background-color: #6200ea;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            margin-top: 20px;
+            border-radius: 5px;
+        }
+
+        .btn:hover {
+            background-color: #3700b3;
+        }
+
+        .results {
+            margin-top: 20px;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Тестирование</h1>
+    <form id="zodiacForm">
+        <!-- Вопрос 1 -->
+        <div class="question">
+            <label>1. Какой ваш знак зодиака?</label><br>
+            <select id="userSign">
+                <option value="aries">Овен</option>
+                <option value="taurus">Телец</option>
+                <option value="gemini">Близнецы</option>
+                <option value="cancer">Рак</option>
+                <option value="leo">Лев</option>
+                <option value="virgo">Дева</option>
+                <option value="libra">Весы</option>
+                <option value="scorpio">Скорпион</option>
+                <option value="sagittarius">Стрелец</option>
+                <option value="capricorn">Козерог</option>
+                <option value="aquarius">Водолей</option>
+                <option value="pisces">Рыбы</option>
+            </select>
+        </div>
+        <!-- Вопрос 2 -->
+        <div class="question">
+            <label>2. Какой знак зодиака у вашего партнера?</label><br>
+            <select id="partnerSign">
+                <option value="aries">Овен</option>
+                <option value="taurus">Телец</option>
+                <option value="gemini">Близнецы</option>
+                <option value="cancer">Рак</option>
+                <option value="leo">Лев</option>
+                <option value="virgo">Дева</option>
+                <option value="libra">Весы</option>
+                <option value="scorpio">Скорпион</option>
+                <option value="sagittarius">Стрелец</option>
+                <option value="capricorn">Козерог</option>
+                <option value="aquarius">Водолей</option>
+                <option value="pisces">Рыбы</option>
+            </select>
+        </div>
+        <!-- Вопросы 3-10 -->
+        <div class="question">
+            <label>3. Как вы описали бы ваши отношения?</label><br>
+            <select id="relationshipQuality">
+                <option value="harmonious">Гармоничные</option>
+                <option value="conflicting">Конфликтные</option>
+                <option value="neutral">Нейтральные</option>
+            </select>
+        </div>
+
+        <div class="question">
+            <label>4. Как часто вы ссоритесь?</label><br>
+            <select id="fightsFrequency">
+                <option value="rarely">Редко</option>
+                <option value="often">Часто</option>
+                <option value="never">Никогда</option>
+            </select>
+        </div>
+
+        <div class="question">
+            <label>5. Как вы решаете конфликты?</label><br>
+            <select id="conflictResolution">
+                <option value="compromise">Компромисс</option>
+                <option value="dominance">Доминирование одного</option>
+                <option value="ignore">Игнорирование</option>
+            </select>
+        </div>
+
+        <div class="question">
+            <label>6. Как вы проводите время вместе?</label><br>
+            <select id="timeTogether">
+                <option value="active">Активно</option>
+                <option value="calm">Спокойно</option>
+                <option value="mixed">Смешанно</option>
+            </select>
+        </div>
+
+        <div class="question">
+            <label>7. Есть ли у вас общие интересы?</label><br>
+            <select id="commonInterests">
+                <option value="yes">Да</option>
+                <option value="no">Нет</option>
+                <option value="some">Частично</option>
+            </select>
+        </div>
+
+        <div class="question">
+            <label>8. Как вы проявляете заботу друг о друге?</label><br>
+            <select id="careStyle">
+                <option value="support">Поддержка</option>
+                <option value="criticism">Критика</option>
+                <option value="neutral">Нейтрально</option>
+            </select>
+        </div>
+
+        <div class="question">
+            <label>9. Ваши взгляды на будущее совпадают?</label><br>
+            <select id="futureViews">
+                <option value="aligned">Совпадают</option>
+                <option value="different">Различаются</option>
+                <option value="unsure">Неуверены</option>
+            </select>
+        </div>
+
+        <div class="question">
+            <label>10. Чувствуете ли вы эмоциональную связь?</label><br>
+            <select id="emotionalConnection">
+                <option value="strong">Сильная</option>
+                <option value="weak">Слабая</option>
+                <option value="none">Отсутствует</option>
+            </select>
+        </div>
+
+        <button type="button" class="btn" onclick="calculateCompatibility()">Показать результат</button>
+    </form>
+
+    <div class="results" id="results"></div>
+
+    <script>
+        function calculateCompatibility() {
+            const userSign = document.getElementById('userSign').value;
+            const partnerSign = document.getElementById('partnerSign').value;
+            const relationshipQuality = document.getElementById('relationshipQuality').value;
+            const fightsFrequency = document.getElementById('fightsFrequency').value;
+            const conflictResolution = document.getElementById('conflictResolution').value;
+            const timeTogether = document.getElementById('timeTogether').value;
+            const commonInterests = document.getElementById('commonInterests').value;
+            const careStyle = document.getElementById('careStyle').value;
+            const futureViews = document.getElementById('futureViews').value;
+            const emotionalConnection = document.getElementById('emotionalConnection').value;
+
+            let compatibilityScore = 0;
+
+            // Простая логика для определения совместимости
+            if (userSign === partnerSign) {
+                compatibilityScore += 10;
+            }
+            if ((userSign === 'aries' && partnerSign === 'leo') || (userSign === 'leo' && partnerSign === 'aries')) {
+                compatibilityScore += 8;
+            }
+
+            if (relationshipQuality === 'harmonious') compatibilityScore += 5;
+            if (fightsFrequency === 'rarely') compatibilityScore += 4;
+            if (conflictResolution === 'compromise') compatibilityScore += 4;
+            if (timeTogether === 'active' || timeTogether === 'mixed') compatibilityScore += 3;
+            if (commonInterests === 'yes') compatibilityScore += 3;
+            if (careStyle === 'support') compatibilityScore += 4;
+            if (futureViews === 'aligned') compatibilityScore += 5;
+            if (emotionalConnection === 'strong') compatibilityScore += 5;
+
+            let resultText = '';
+
+            if (compatibilityScore > 35) {
+                resultText = 'Вы прекрасно подходите друг другу! Ваша совместимость очень высока.';
+            } else if (compatibilityScore > 20) {
+                resultText = 'У вас есть хорошие шансы на гармоничные отношения. Продолжайте развиваться вместе.';
+            } else {
+                resultText = 'Совместимость низкая, но при желании вы можете улучшить ваши отношения.';
+            }
+
+            document.getElementById('results').innerText = resultText;
+        }
+    </script>
+
+</body>
+</html>

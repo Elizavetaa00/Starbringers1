@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8"> <!-- Устанавливаем кодировку страницы -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> <!-- Поддержка Internet Explorer -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Адаптивность для мобильных устройств -->
+    <title>Главная страница</title> <!-- Заголовок страницы -->
+    <style>
+        body {
+            margin: 0; /* Убираем отступы у body */
+            padding: 0; /* Убираем внутренние отступы у body */
+            font-family: Arial, sans-serif; /* Шрифт страницы */
+            background: url('fon.jpg') no-repeat center center fixed; /* Фоновое изображение */
+            background-size: cover; /* Заполнение фона */
+            display: flex; /* Используем flexbox для размещения элементов */
+            flex-direction: column; /* Вертикальное расположение элементов */
+            height: 100vh; /* Высота страницы на весь экран */
+            justify-content: space-between; /* Распределение элементов по высоте */
+            overflow: hidden; /* Скрытие лишнего контента */
+            position: relative; /* Для позиционирования дыма */
+        }
+        header {
+            display: flex; /* Используем flexbox для header */
+            align-items: center; /* Выравнивание по вертикали */
+            justify-content: space-between; /* Распределение элементов по горизонтали */
+            padding: 10px 20px; /* Отступы внутри header */
+            background-color: rgba(0, 0, 0, 0.5); /* Полупрозрачный фон */
+            color: white; /* Цвет текста */
+        }
+        header img {
+            width: 100px; /* Ширина логотипа */
+            height: 100px; /* Высота логотипа */
+        }
+        header h1 {
+            flex-grow: 1; /* Заголовок занимает оставшееся пространство */
+            text-align: center; /* Центрирование текста */
+            margin: 0; /* Убираем отступы */
+        }
+        main {
+            display: flex; /* Используем flexbox для main */
+            justify-content: center; /* Центрирование содержимого по горизонтали */
+            align-items: center; /* Центрирование содержимого по вертикали */
+            flex-grow: 1; /* Занимает оставшееся пространство */
+            position: relative; /* Позиционирование для кнопки */
+            z-index: 1; /* Поднимаем кнопку над дымом */
+        }
+        .btn {
+            padding: 15px 30px; /* Отступы внутри кнопки */
+            font-size: 30px; /* Размер шрифта кнопки */
+            color: white; /* Цвет текста кнопки */
+            background-color: #007bff; /* Цвет фона кнопки */
+            border: none; /* Убираем рамку */
+            cursor: pointer; /* Указатель при наведении */
+            border-radius: 5px; /* Закругленные углы кнопки */
+            transition: background-color 0.3s; /* Плавный переход фона при наведении */
+        }
+        .btn:hover {
+            background-color: #0056b3; /* Изменение цвета фона при наведении */
+        }
+        footer {
+            padding: 10px 20px; /* Отступы внутри footer */
+            background-color: rgba(0, 0, 0, 0.5); /* Полупрозрачный фон */
+            color: white; /* Цвет текста */
+            text-align: center; /* Центрирование текста */
+        }
+        .center-content {
+            display: flex; /* Используем flexbox для центра */
+            flex-wrap: wrap; /* Перенос изображений на новую строку при необходимости */
+            align-items: center; /* Центрирование по вертикали */
+            justify-content: space-around; /* Равномерное распределение изображений */
+            width: 100%; /* Занимает всю ширину родителя */
+            gap: 10px; /* Промежуток между изображениями */
+            margin: 10px 0; /* Отступы сверху и снизу */
+        }
+        .zodiac-image {
+            width: 50px; /* Ширина изображений */
+            height: 50px; /* Высота изображений */
+            object-fit: cover; /* Соотношение сторон изображения */
+        }
+        /* Стили для дыма */
+        .smoke {
+            position: absolute; /* Абсолютное позиционирование */
+            top: 0; /* Сверху */
+            left: 50%; /* Центр по горизонтали */
+            width: 200%; /* Ширина дыма */
+            height: 100%; /* Высота дыма */
+            background: url('smoke.png') repeat-x; /* Фоновое изображение дыма */
+            opacity: 0.5; /* Полупрозрачность дыма */
+            animation: moveSmoke 10s linear infinite; /* Анимация для дыма */
+            z-index: 0; /* Дым находится ниже других элементов */
+        }
+        .smoke:nth-child(2) {
+            animation-delay: 5s; /* Задержка для второго элемента дыма */
+        }
+        @keyframes moveSmoke {
+            0% {
+                transform: translateX(-50%); /* Начальная позиция */
+            }
+            100% {
+                transform: translateX(50%); /* Конечная позиция */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="smoke"></div> <!-- Первый элемент дыма -->
+    <div class="smoke"></div> <!-- Второй элемент дыма -->
+
+    <header>
+        <img src="logo.png" alt="Логотип"> <!-- Логотип сайта -->
+        <h1>Starbringers</h1> <!-- Название сайта -->
+    </header>
+
+    <div class="center-content"> <!-- Контейнер для изображений знаков зодиака -->
+        <img src="весы.png" class="zodiac-image" alt="Весы"> <!-- Изображение знака Весы -->
+        <img src="водолей.png" class="zodiac-image" alt="Водолей"> <!-- Изображение знака Водолей -->
+        <img src="близнецы.png" class="zodiac-image" alt="Водолей"> <!-- Изображение знака Водолей -->
+        <img src="дева.png" class="zodiac-image" alt="Водолей"> <!-- Изображение знака Водолей -->
+        <img src="козерог.png" class="zodiac-image" alt="Водолей"> <!-- Изображение знака Водолей -->
+        <img src="лев.png" class="zodiac-image" alt="Водолей"> <!-- Изображение знака Водолей -->
+        <img src="рак.png" class="zodiac-image" alt="Водолей"> <!-- Изображение знака Водолей -->
+        <img src="рыба.png" class="zodiac-image" alt="Водолей"> <!-- Изображение знака Водолей -->
+        <img src="стрелец.png" class="zodiac-image" alt="Водолей"> <!-- Изображение знака Водолей -->
+        <img src="телец.png" class="zodiac-image" alt="Водолей"> <!-- Изображение знака Водолей -->
+        <img src="водолей.png" class="zodiac-image" alt="Водолей"> <!-- Изображение знака Водолей -->
+        <img src="водолей.png" class="zodiac-image" alt="Водолей"> <!-- Изображение знака Водолей -->
+    </div>
+
+    <br><br><br>
+    <h1 style="color: white; text-align: center;">Тест на совместимость знаков зодиака</h1> <!-- Заголовок теста -->
+    <br>
+
+    <main>
+        <button class="btn" onclick="location.href='test.html'">Начать тест</button> <!-- Кнопка для перехода к тесту -->
+    </main>
+
+    <footer>
+        <p>Разработчик: Большакова Елизавета</p> <!-- Информация о разработчиках -->
+    </footer>
+
+</body>
+</html>
